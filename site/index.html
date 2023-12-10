@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lamp Man: super hero by day, his own light at night!</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            background-color: black;
-        }
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.10/pico.classless.min.css"
+      integrity="sha512-EvC9tWIAGKq2kEWOcRC+w0JWMaEoQPJ52ZVFLJMT/0Ri3Wq3QPZ/IYGTgfY+buUV1P2NDNiU8w6sXfVUxxcq0w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-        .bg-image {
-            height: 50%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        #bulb {
-          position: absolute;
-          right: 0px;
-          bottom: 0px;
-        }
+    <style>
+      #bulb {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+      }
+      #main {
+        padding: 0px;
+        text-align: center;
+      }
+      #article {
+        display: inline-block;
+        text-align: center;
+        padding: 1em;
+      }
+      #lampman {
+        width: auto;
+        height: auto;
+        max-height: 80vh;
+      }
     </style>
-</head>
-<body>
-    <div id="imageContainer" class="bg-image"></div>
+  </head>
+  <body>
+    <main id="main">
+      <article id="article">
+        <img id="lampman" alt="Lamp man!" src="0.webp" />
+      </article>
+    </main>
 
     <script>
-function updateBackground() {
-    const hour = new Date().getHours();
-    const imageNumber = hour % 4;
-    const imageUrl = imageNumber + ".webp";
+      function updateLampman() {
+        const timestamp = new Date().getTime();
+        const modulo = timestamp % 3600;
+        const index = modulo; // 60;
+        document.getElementById("lampman").src = index + ".webp";
+      }
 
-    document.getElementById("imageContainer").style.backgroundImage = 'url("' + imageUrl + '")';
-}
+      updateLampman();
 
-updateBackground();
-
-setInterval(updateBackground, 3600000);
+      setInterval(updateLampman, 30000);
     </script>
     <a href="https://ko-fi.com/bneijt" id="bulb">💡</a>
-</body>
+  </body>
 </html>
