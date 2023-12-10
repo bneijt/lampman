@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Man: super hero by day, his own light at night!</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: black;
+        }
+
+        .bg-image {
+            height: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #bulb {
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="imageContainer" class="bg-image"></div>
+
+    <script>
+function updateBackground() {
+    const hour = new Date().getHours();
+    const imageNumber = hour % 4;
+    const imageUrl = imageNumber + ".webp";
+
+    document.getElementById("imageContainer").style.backgroundImage = 'url("' + imageUrl + '")';
+}
+
+updateBackground();
+
+setInterval(updateBackground, 3600000);
+    </script>
+    <a href="https://ko-fi.com/bneijt" id="bulb">💡</a>
+</body>
+</html>
