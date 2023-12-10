@@ -42,16 +42,17 @@
     </main>
 
     <script>
+      const fiveMinutesInMs = 300000;
       function updateLampman() {
         const timestamp = new Date().getTime();
-        const modulo = timestamp % 3600;
-        const index = modulo; // 60;
+        const hour = Math.floor(timestamp / fiveMinutesInMs);
+        const index = hour % 4;
         document.getElementById("lampman").src = index + ".webp";
       }
 
       updateLampman();
 
-      setInterval(updateLampman, 30000);
+      setInterval(updateLampman, fiveMinutesInMs);
     </script>
     <a href="https://ko-fi.com/bneijt" id="bulb">💡</a>
   </body>
